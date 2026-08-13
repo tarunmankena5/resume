@@ -10,11 +10,11 @@
      1. CSS VARIABLES
   ========================================= */
   :root {
-    --bg: #FAF9F6;
-    --bg-alt: #F1EFE9;
-    --ink: #1A1B1E;
-    --ink-soft: #52555C;
-    --line: #E1DED4;
+    --bg: #0B0D10;
+    --bg-alt: #11151A;
+    --ink: #F2F4F7;
+    --ink-soft: #A8B0BB;
+    --line: #252B33;
 
     /* four-color accent system, used across cards for a lively but controlled palette */
     --accent: #2F5D50;        /* teal   - primary */
@@ -22,12 +22,12 @@
     --accent-3: #3F5EAA;      /* blue   */
     --accent-4: #A63D5D;      /* rose   */
 
-    --accent-soft: #E7EFEC;
-    --accent-2-soft: #FBEAE0;
-    --accent-3-soft: #E8EDF7;
-    --accent-4-soft: #F6E7EC;
+    --accent-soft: #132B2A;
+    --accent-2-soft: #1D1934;
+    --accent-3-soft: #12253A;
+    --accent-4-soft: #241A31;
 
-    --card-bg: #FFFFFF;
+    --card-bg: #11151A;
     --radius: 12px;
     --shadow: 0 2px 10px rgba(26, 27, 30, 0.05);
     --shadow-hover: 0 12px 30px rgba(26, 27, 30, 0.12);
@@ -174,7 +174,7 @@
     right: -120px;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, var(--accent-soft) 0%, rgba(231,239,236,0) 70%);
+    background: radial-gradient(circle, rgba(99,214,197,0.14) 0%, rgba(99,214,197,0) 70%);
     z-index: -1;
   }
 
@@ -683,7 +683,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, var(--accent-4-soft) 0%, rgba(246,231,236,0) 65%);
+    background: radial-gradient(ellipse at center, rgba(139,124,255,0.12) 0%, rgba(139,124,255,0) 65%);
     z-index: -1;
   }
 
@@ -766,6 +766,45 @@
     .footer-inner { flex-direction: column; text-align: center; }
   }
 
+
+  /* Dark portfolio enhancements */
+  body {
+    background:
+      radial-gradient(circle at 85% 10%, rgba(99,214,197,0.055), transparent 28%),
+      radial-gradient(circle at 10% 55%, rgba(139,124,255,0.045), transparent 25%),
+      var(--bg);
+  }
+
+  header.navbar {
+    background: rgba(11, 13, 16, 0.88);
+  }
+
+  .hero-photo {
+    background: #151A21;
+  }
+
+  .hero-photo-ring {
+    opacity: 0.95;
+  }
+
+  .about-card,
+  .skill-category,
+  .exp-card,
+  .project-card,
+  .research-card,
+  .cert-card {
+    background: rgba(17, 21, 26, 0.88);
+  }
+
+  .btn-secondary {
+    background: #11151A;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #07100F;
+  }
+
 </style>
 </head>
 
@@ -783,7 +822,6 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#design">Design</a>
         <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -795,19 +833,18 @@
   ========================================= -->
 <section id="home">
   <div class="hero-text">
-    <span class="hero-eyebrow">Computer Science • Software • Design</span>
+    <span class="hero-eyebrow">Computer Science • Software • Engineering</span>
 
     <h1 class="hero-name">Tarun Mankena</h1>
 
     <p class="hero-headline">
-      Computer Science Engineer | Java &amp; Software Development | Graphic Design
+      Computer Science Engineer | Java &amp; Software Development
     </p>
 
     <p class="hero-intro">
       Computer Science graduate with hands-on experience in enterprise software development,
-      Java, full-stack projects, machine learning research, and graphic design. I enjoy
-      combining technical problem-solving with creative visual work to build useful and
-      engaging digital experiences.
+      Java, full-stack projects, and machine learning research. I enjoy solving technical
+      problems and building practical, reliable digital solutions.
     </p>
 
     <div class="hero-actions">
@@ -825,7 +862,7 @@
 
     <img
       class="hero-photo"
-      src="HU22CSEN0102286.JPG"
+      src="tarun-mankena-profile.jpg"
       alt="Tarun Mankena"
     >
   </div>
@@ -838,14 +875,12 @@
       <h2 class="section-title">About Me</h2>
       <p>
         I am a Computer Science Engineering graduate from GITAM University, Hyderabad,
-        with an interest in software development, backend engineering, machine learning,
-        and creative digital design.
+        with an interest in software development, backend engineering, and machine learning.
       </p>
       <p>
         During my internship at EY, I gained experience working with Java, backend and
-        middleware applications, Agile workflows, Jira, and GitHub. Alongside technical
-        work, I have developed posters, event creatives, digital artwork, and photo
-        manipulations using tools such as Adobe Illustrator and Photoshop.
+        middleware applications, Agile workflows, Jira, and GitHub. I enjoy working on practical software projects and exploring machine learning and
+        application security.
       </p>
     </div>
 
@@ -903,18 +938,6 @@
           <span class="skill-tag">Agile Scrum</span>
           <span class="skill-tag">REST APIs</span>
           <span class="skill-tag">Machine Learning</span>
-        </div>
-      </div>
-
-      <div class="skill-category" style="--cat-color: var(--accent-4); --cat-soft: var(--accent-4-soft);">
-        <h3>Graphic Design</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Adobe Illustrator</span>
-          <span class="skill-tag">Photoshop</span>
-          <span class="skill-tag">Poster Design</span>
-          <span class="skill-tag">Digital Art</span>
-          <span class="skill-tag">Photo Manipulation</span>
-          <span class="skill-tag">Branding</span>
         </div>
       </div>
 
@@ -1020,25 +1043,6 @@
   </section>
 
   <!-- =========================================
-       DESIGN
-  ========================================= -->
-  <section id="design">
-    <h2 class="section-title">Graphic Design</h2>
-    <p class="section-lead">Creative work spanning event posters, digital artwork, photo manipulation, and promotional design.</p>
-
-    <div class="research-card">
-      <h3>Graphic Design &amp; Digital Art</h3>
-      <p>
-        I create visual content for events, social media, promotional campaigns, and
-        personal projects. My work includes poster design, digital artwork, photo
-        manipulation, branding, and experimental visual styles using Adobe Illustrator
-        and Photoshop.
-      </p>
-      <span class="research-tag">Illustrator · Photoshop · Poster Design · Digital Art</span>
-    </div>
-  </section>
-
-  <!-- =========================================
        CERTIFICATIONS
   ========================================= -->
   <section id="certifications">
@@ -1065,7 +1069,7 @@
   <section id="contact">
     <h2 class="contact-title">Let's build something meaningful.</h2>
     <p class="section-lead" style="margin: 0 auto;">
-      Open to software development, technology, creative, and collaborative opportunities.
+      Open to software development, technology, and collaborative opportunities.
     </p>
 
     <div class="contact-actions">
