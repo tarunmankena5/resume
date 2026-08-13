@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gummadi Kushali Krishna Murthy — Portfolio</title>
+<style>
+
+  /* =========================================
+     1. CSS VARIABLES
+  ========================================= */
+  :root {
+    --bg: #FAF9F6;
+    --bg-alt: #F1EFE9;
+    --ink: #1A1B1E;
+    --ink-soft: #52555C;
+    --line: #E1DED4;
+
+    /* four-color accent system, used across cards for a lively but controlled palette */
+    --accent: #2F5D50;        /* teal   - primary */
+    --accent-2: #C9622E;      /* amber  */
+    --accent-3: #3F5EAA;      /* blue   */
+    --accent-4: #A63D5D;      /* rose   */
+
+    --accent-soft: #E7EFEC;
+    --accent-2-soft: #FBEAE0;
+    --accent-3-soft: #E8EDF7;
+    --accent-4-soft: #F6E7EC;
+
+    --card-bg: #FFFFFF;
+    --radius: 12px;
+    --shadow: 0 2px 10px rgba(26, 27, 30, 0.05);
+    --shadow-hover: 0 12px 30px rgba(26, 27, 30, 0.12);
+    --max-width: 1120px;
+    --font-body: 'Segoe UI', 'Helvetica Neue', Arial, system-ui, sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+
+  /* =========================================
+     2. RESET & BASE
+  ========================================= */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; text-decoration: none; }
+
+  ul { list-style: none; }
+
+  section {
+    padding: 44px 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  h2.section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: 8px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--eyebrow-color, var(--accent));
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .section-lead {
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 48px;
+    font-size: 1rem;
+  }
+
+  /* =========================================
+     3. NAVIGATION
+  ========================================= */
+  header.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 249, 246, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+
+  .logo::before {
+    content: "> ";
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--ink-soft);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  /* =========================================
+     4. HERO
+  ========================================= */
+  #home {
+    padding-top: 100px;
+    padding-bottom: 90px;
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+
+  #home::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, rgba(231,239,236,0) 70%);
+    z-index: -1;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
+  .hero-name {
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    background: linear-gradient(90deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  .hero-intro {
+    max-width: 560px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    border: 1.5px solid transparent;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), #24473d);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(90deg, var(--accent-2), #a84f22);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent-3);
+    color: var(--accent-3);
+    transform: translateY(-2px);
+  }
+
+  .hero-social {
+    display: flex;
+    gap: 18px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-social a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .hero-social a:hover {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+  }
+
+  .hero-photo-wrap {
+    position: relative;
+    justify-self: center;
+    width: min(340px, 100%);
+  }
+
+  .hero-photo-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2) 50%, var(--accent-3) 100%);
+    opacity: 0.85;
+    z-index: -1;
+  }
+
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 6px solid var(--bg);
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* =========================================
+     5. ABOUT
+  ========================================= */
+  #about {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    margin-bottom: 16px;
+  }
+
+  .about-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent-3);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+
+  .about-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+    color: var(--accent-3);
+  }
+
+  .edu-degree {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .edu-meta {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin-top: 4px;
+    line-height: 1.7;
+  }
+
+  .cgpa-badge {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--accent-3-soft);
+    color: var(--accent-3);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* =========================================
+     6. SKILLS
+  ========================================= */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .skill-category {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--cat-color, var(--accent));
+    border-radius: var(--radius);
+    padding: 26px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .skill-category:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  .skill-category h3 {
+    font-size: 1rem;
+    margin-bottom: 16px;
+    color: var(--cat-color, var(--accent));
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    background: var(--cat-soft, var(--accent-soft));
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    color: var(--ink);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .skill-tag:hover {
+    background: var(--cat-color, var(--accent));
+    color: #fff;
+    border-color: var(--cat-color, var(--accent));
+  }
+
+  /* =========================================
+     7. EXPERIENCE
+  ========================================= */
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent-2);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .exp-role {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .exp-tag {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--accent-2);
+  }
+
+  .exp-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .exp-list li {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-2);
+  }
+
+  /* =========================================
+     8. PROJECTS
+  ========================================= */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--proj-color, var(--accent));
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(120deg, var(--card-bg) 45%, var(--proj-soft, var(--accent-soft)) 160%);
+  }
+
+  .project-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .project-desc {
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+  }
+
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0;
+  }
+
+  .tech-pill {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--proj-color, var(--accent));
+    background: var(--proj-soft, var(--accent-soft));
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .project-points {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .project-points li {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .project-points li::before {
+    content: "•";
+    color: var(--proj-color, var(--accent));
+    position: absolute;
+    left: 0;
+  }
+
+  .project-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--proj-color, var(--accent));
+    width: fit-content;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.2s ease;
+  }
+
+  .project-link:hover { opacity: 0.7; }
+
+  /* =========================================
+     9. RESEARCH
+  ========================================= */
+  .research-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--accent-4);
+    border-radius: var(--radius);
+    padding: 34px;
+    box-shadow: var(--shadow);
+  }
+
+  .research-card h3 {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin-bottom: 14px;
+  }
+
+  .research-card p {
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    max-width: 700px;
+  }
+
+  .research-tag {
+    display: inline-block;
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-4);
+    background: var(--accent-4-soft);
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  /* =========================================
+     10. CERTIFICATIONS
+  ========================================= */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .cert-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--cert-color, var(--accent));
+    border-radius: var(--radius);
+    padding: 22px;
+    box-shadow: var(--shadow);
+    font-size: 0.92rem;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cert-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  .cert-issuer {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--cert-color, var(--accent));
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* =========================================
+     11. CO-CURRICULAR
+  ========================================= */
+  .cocurr-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .cocurr-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--co-color, var(--accent));
+    border-radius: var(--radius);
+    padding: 26px;
+    box-shadow: var(--shadow);
+  }
+
+  .cocurr-card h4 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--co-color, var(--ink));
+  }
+
+  .cocurr-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cocurr-card li {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .cocurr-card li::before {
+    content: "—";
+    color: var(--co-color, var(--accent));
+    position: absolute;
+    left: 0;
+  }
+
+  /* =========================================
+     12. CONTACT
+  ========================================= */
+  #contact {
+    text-align: center;
+    position: relative;
+  }
+
+  #contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, var(--accent-4-soft) 0%, rgba(246,231,236,0) 65%);
+    z-index: -1;
+  }
+
+  .contact-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+
+  .contact-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  /* =========================================
+     13. FOOTER
+  ========================================= */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 24px;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-inner p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .footer-links a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--accent-2); }
+
+  /* =========================================
+     14. RESPONSIVE
+  ========================================= */
+  @media (max-width: 860px) {
+    #home { grid-template-columns: 1fr; text-align: left; }
+    .hero-photo-wrap { justify-self: start; width: 220px; order: -1; }
+    #about { grid-template-columns: 1fr; gap: 32px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    .cocurr-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 32px 20px; }
+    #home { padding-top: 50px; }
+    .hero-photo-wrap { width: 160px; }
+    .nav-inner { justify-content: center; text-align: center; }
+    .nav-links { justify-content: center; }
+    .nav-links a { padding: 6px 9px; font-size: 0.86rem; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .exp-head { flex-direction: column; align-items: flex-start; }
+    .btn { width: 100%; justify-content: center; }
+    .hero-actions { flex-direction: column; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+
+</style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       NAVIGATION
+  ========================================= -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">Tarun</a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#design">Design</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================================
+       HERO
+  ========================================= -->
+  <section id="home">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Computer Science • Software • Design</span>
+      <h1 class="hero-name">Tarun Mankena</h1>
+      <p class="hero-headline">Computer Science Engineer | Java &amp; Software Development | Graphic Design</p>
+      <p class="hero-intro">
+        Computer Science graduate with hands-on experience in enterprise software development,
+        Java, full-stack projects, machine learning research, and graphic design. I enjoy
+        combining technical problem-solving with creative visual work to build useful and
+        engaging digital experiences.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      </div>
+
+      <div class="hero-social">
+        <a href="mailto:mtarun.work@gmail.com">mtarun.work@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring"></div>
+      <div class="hero-photo"
+           style="display:flex;align-items:center;justify-content:center;
+                  background:linear-gradient(135deg,#2F5D50,#3F5EAA);
+                  color:white;font-family:var(--font-mono);
+                  font-size:4rem;font-weight:800;">
+        TM
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       ABOUT
+  ========================================= -->
+  <section id="about">
+    <div class="about-text">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        I am a Computer Science Engineering graduate from GITAM University, Hyderabad,
+        with an interest in software development, backend engineering, machine learning,
+        and creative digital design.
+      </p>
+      <p>
+        During my internship at EY, I gained experience working with Java, backend and
+        middleware applications, Agile workflows, Jira, and GitHub. Alongside technical
+        work, I have developed posters, event creatives, digital artwork, and photo
+        manipulations using tools such as Adobe Illustrator and Photoshop.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <h3>Education</h3>
+      <p class="edu-degree">B.Tech in Computer Science and Engineering</p>
+      <p class="edu-meta">
+        GITAM University, Hyderabad<br>
+        2022 – 2026
+      </p>
+      <span class="cgpa-badge">CGPA: 7.3 / 10</span>
+    </div>
+  </section>
+
+  <!-- =========================================
+       SKILLS
+  ========================================= -->
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-lead">A combination of software development, machine learning, and visual design skills.</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-category" style="--cat-color: var(--accent); --cat-soft: var(--accent-soft);">
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-category" style="--cat-color: var(--accent-3); --cat-soft: var(--accent-3-soft);">
+        <h3>Development &amp; Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">MERN Stack</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Jira</span>
+        </div>
+      </div>
+
+      <div class="skill-category" style="--cat-color: var(--accent-2); --cat-soft: var(--accent-2-soft);">
+        <h3>Core Concepts</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">OOP</span>
+          <span class="skill-tag">DSA</span>
+          <span class="skill-tag">SDLC</span>
+          <span class="skill-tag">Agile Scrum</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">Machine Learning</span>
+        </div>
+      </div>
+
+      <div class="skill-category" style="--cat-color: var(--accent-4); --cat-soft: var(--accent-4-soft);">
+        <h3>Graphic Design</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Poster Design</span>
+          <span class="skill-tag">Digital Art</span>
+          <span class="skill-tag">Photo Manipulation</span>
+          <span class="skill-tag">Branding</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       EXPERIENCE
+  ========================================= -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <p class="section-lead">Enterprise software development experience with a focus on Java, middleware, and Agile delivery.</p>
+
+    <div class="exp-card">
+      <div class="exp-head">
+        <span class="exp-role">EY — Technology Intern, Middleware Services</span>
+        <span class="exp-tag">2025 · Java · Middleware</span>
+      </div>
+
+      <ul class="exp-list">
+        <li>Worked on Java-based backend and middleware applications for enterprise workflows.</li>
+        <li>Helped automate business processes and improve existing application workflows.</li>
+        <li>Collaborated with team members to develop, test, and improve software features.</li>
+        <li>Participated in Agile meetings and used Jira for task tracking and sprint coordination.</li>
+        <li>Used GitHub for version control and collaborative development.</li>
+        <li>Assisted in understanding requirements, resolving technical issues, and improving workflow efficiency.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================
+       PROJECTS
+  ========================================= -->
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <p class="section-lead">Software, machine learning, and security projects developed during my academic and technical journey.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card featured" style="--proj-color: var(--accent-2); --proj-soft: var(--accent-2-soft);">
+        <span class="project-name">Autonomous Vehicle Security</span>
+        <p class="project-desc">
+          Research project investigating data poisoning and other machine learning security
+          threats in autonomous vehicle perception and localization systems.
+        </p>
+
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">PyTorch</span>
+          <span class="tech-pill">CNN</span>
+          <span class="tech-pill">ResNet</span>
+          <span class="tech-pill">Computer Vision</span>
+        </div>
+
+        <ul class="project-points">
+          <li>Analyzed ML vulnerabilities including adversarial attacks, backdoors, GPS spoofing, and data poisoning.</li>
+          <li>Studied attacks against perception models used in autonomous vehicle systems.</li>
+          <li>Explored multi-layer defenses including anomaly detection, adversarial training, and sensor fusion.</li>
+          <li>Evaluated security using metrics such as mAP, IoU, attack success rate, detection rate, and false-positive rate.</li>
+        </ul>
+      </div>
+
+      <div class="project-card" style="--proj-color: var(--accent); --proj-soft: var(--accent-soft);">
+        <span class="project-name">Shopzilla — E-Commerce Web Application</span>
+        <p class="project-desc">
+          Full-stack e-commerce application with authentication, product management, and cart functionality.
+        </p>
+
+        <div class="tech-row">
+          <span class="tech-pill">MERN Stack</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">REST APIs</span>
+        </div>
+
+        <ul class="project-points">
+          <li>Built authentication, product listing, and cart management features.</li>
+          <li>Integrated frontend and backend components through APIs.</li>
+          <li>Worked with Git and Postman during development and testing.</li>
+        </ul>
+      </div>
+
+      <div class="project-card" style="--proj-color: var(--accent-3); --proj-soft: var(--accent-3-soft);">
+        <span class="project-name">Book Recommender System</span>
+        <p class="project-desc">
+          Machine learning recommendation system combining collaborative and content-based filtering.
+        </p>
+
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Machine Learning</span>
+          <span class="tech-pill">Data Analysis</span>
+        </div>
+
+        <ul class="project-points">
+          <li>Implemented collaborative and content-based recommendation approaches.</li>
+          <li>Preprocessed and analyzed data to generate personalized recommendations.</li>
+          <li>Focused on improving recommendation quality through feature analysis.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       DESIGN
+  ========================================= -->
+  <section id="design">
+    <h2 class="section-title">Graphic Design</h2>
+    <p class="section-lead">Creative work spanning event posters, digital artwork, photo manipulation, and promotional design.</p>
+
+    <div class="research-card">
+      <h3>Graphic Design &amp; Digital Art</h3>
+      <p>
+        I create visual content for events, social media, promotional campaigns, and
+        personal projects. My work includes poster design, digital artwork, photo
+        manipulation, branding, and experimental visual styles using Adobe Illustrator
+        and Photoshop.
+      </p>
+      <span class="research-tag">Illustrator · Photoshop · Poster Design · Digital Art</span>
+    </div>
+  </section>
+
+  <!-- =========================================
+       CERTIFICATIONS
+  ========================================= -->
+  <section id="certifications">
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="cert-grid">
+
+      <div class="cert-card" style="--cert-color: var(--accent);">
+        <span class="cert-issuer">Infosys Springboard</span>
+        Agile Scrum Foundation
+      </div>
+
+      <div class="cert-card" style="--cert-color: var(--accent-2);">
+        <span class="cert-issuer">Infosys</span>
+        Introduction to Computers and Office Productivity Software
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       CONTACT
+  ========================================= -->
+  <section id="contact">
+    <h2 class="contact-title">Let's build something meaningful.</h2>
+    <p class="section-lead" style="margin: 0 auto;">
+      Open to software development, technology, creative, and collaborative opportunities.
+    </p>
+
+    <div class="contact-actions">
+      <a href="mailto:mtarun.work@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://github.com/tarunmankena5" target="_blank" rel="noopener" class="btn btn-secondary">GitHub</a>
+      <a href="https://www.linkedin.com/in/tarun-mankena-rudransh/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Tarun Mankena. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com/tarunmankena5" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/tarun-mankena-rudransh/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
